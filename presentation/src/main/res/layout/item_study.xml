@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.dgsw.hackathon.moira.widget.recyclerview.viewmodel.JobHomeItemViewModel" />
+            type="com.dgsw.hackathon.moira.widget.recyclerview.viewmodel.StudyItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

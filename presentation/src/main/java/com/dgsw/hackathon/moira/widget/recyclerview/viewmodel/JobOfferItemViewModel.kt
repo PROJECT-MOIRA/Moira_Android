@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dgsw.hackathon.moira.model.JobData
 
-class JobHomeItemViewModel : ViewModel() {
+class JobOfferItemViewModel : ViewModel() {
 
     val title = MutableLiveData<String>()
     val field = MutableLiveData<String>()

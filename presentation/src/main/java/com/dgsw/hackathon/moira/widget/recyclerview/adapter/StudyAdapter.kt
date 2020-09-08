@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dgsw.hackathon.moira.R
-import com.dgsw.hackathon.moira.databinding.ItemStudyHomeBinding
+import com.dgsw.hackathon.moira.databinding.ItemStudyBinding
 import com.dgsw.hackathon.moira.model.StudyData
-import com.dgsw.hackathon.moira.widget.recyclerview.viewmodel.StudyHomeItemViewModel
+import com.dgsw.hackathon.moira.widget.recyclerview.viewmodel.StudyItemViewModel
 
-class StudyHomeAdapter : RecyclerView.Adapter<StudyHomeAdapter.ViewHolder>(){
+class StudyAdapter : RecyclerView.Adapter<StudyAdapter.ViewHolder>(){
 
     private lateinit var studyList : ArrayList<StudyData>
 
@@ -18,8 +18,8 @@ class StudyHomeAdapter : RecyclerView.Adapter<StudyHomeAdapter.ViewHolder>(){
         studyList = list
     }
 
-    class ViewHolder(private val binding : ItemStudyHomeBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val viewModel = StudyHomeItemViewModel()
+    class ViewHolder(private val binding : ItemStudyBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val viewModel = StudyItemViewModel()
 
         fun bind(study: StudyData) {
             viewModel.bind(study)
@@ -31,7 +31,7 @@ class StudyHomeAdapter : RecyclerView.Adapter<StudyHomeAdapter.ViewHolder>(){
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_study_home,
+                R.layout.item_study,
                 parent,
                 false
             )

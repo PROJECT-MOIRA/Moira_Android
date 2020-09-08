@@ -1,6 +1,7 @@
 package com.dgsw.hackathon.moira.view.fragment
 
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import com.dgsw.hackathon.moira.base.BaseFragment
 import com.dgsw.hackathon.moira.databinding.FragmentJobOfferBinding
 import com.dgsw.hackathon.moira.view.activtiy.JobOfferApplyActivity
@@ -14,6 +15,8 @@ class JobOfferFragment : BaseFragment<FragmentJobOfferBinding, JobOfferViewModel
         get() = getViewModel(JobOfferViewModel::class)
 
     override fun observerVieModel() {
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
+
         with(viewModel) {
             applyEvent.observe(this@JobOfferFragment, Observer {
                 startActivity(JobOfferApplyActivity::class.java)

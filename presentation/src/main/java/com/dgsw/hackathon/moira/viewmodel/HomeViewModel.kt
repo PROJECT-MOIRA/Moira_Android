@@ -5,8 +5,8 @@ import com.dgsw.hackathon.moira.model.JobData
 import com.dgsw.hackathon.moira.model.StudyData
 import com.dgsw.hackathon.moira.usecase.job.GetAllJobOfferUseCase
 import com.dgsw.hackathon.moira.usecase.study.GetAllStudyUseCase
-import com.dgsw.hackathon.moira.widget.recyclerview.adapter.JobHomeAdapter
-import com.dgsw.hackathon.moira.widget.recyclerview.adapter.StudyHomeAdapter
+import com.dgsw.hackathon.moira.widget.recyclerview.adapter.JobOfferAdapter
+import com.dgsw.hackathon.moira.widget.recyclerview.adapter.StudyAdapter
 import io.reactivex.observers.DisposableSingleObserver
 
 class HomeViewModel(
@@ -14,10 +14,10 @@ class HomeViewModel(
     private val getAllStudyUseCase: GetAllStudyUseCase
 ) : BaseViewModel() {
 
-    val jobAdapter = JobHomeAdapter()
+    val jobAdapter = JobOfferAdapter()
     val jobList = ArrayList<JobData>()
 
-    val studyAdapter = StudyHomeAdapter()
+    val studyAdapter = StudyAdapter()
     val studyList = ArrayList<StudyData>()
 
     init {

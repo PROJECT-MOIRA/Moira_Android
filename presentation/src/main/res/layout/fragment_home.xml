@@ -125,7 +125,7 @@
                         app:adapter="@{viewModel.jobAdapter}"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:padding="10dp"
-                        tools:listitem="@layout/item_job_home"/>
+                        tools:listitem="@layout/item_job_offer"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -181,7 +181,7 @@
                         app:adapter="@{viewModel.studyAdapter}"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:padding="10dp"
-                        tools:listitem="@layout/item_job_home"/>
+                        tools:listitem="@layout/item_job_offer"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
