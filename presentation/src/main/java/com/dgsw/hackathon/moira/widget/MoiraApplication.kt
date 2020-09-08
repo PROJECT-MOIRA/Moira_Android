@@ -1,7 +1,7 @@
 package com.dgsw.hackathon.moira.widget
 
 import android.app.Application
-import com.dgsw.hackathon.moira.di.viewModelModule
+import com.dgsw.hackathon.moira.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -14,7 +14,7 @@ class MoiraApplication : Application() {
             androidContext(this@MoiraApplication)
 
             val modules =
-                listOf(viewModelModule)
+                listOf(netWorkModule, remoteModule, repositoryModule, dataSourceModule, useCaseModule, viewModelModule)
 
             modules(modules)
         }

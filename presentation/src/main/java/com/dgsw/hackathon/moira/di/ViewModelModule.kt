@@ -1,12 +1,16 @@
 package com.dgsw.hackathon.moira.di
 
-import com.dgsw.hackathon.moira.viewmodel.HomeViewModel
-import com.dgsw.hackathon.moira.viewmodel.JobOfferViewModel
-import com.dgsw.hackathon.moira.viewmodel.MenuViewModel
-import com.dgsw.hackathon.moira.viewmodel.StudyViewModel
+import com.dgsw.hackathon.moira.viewmodel.*
 import org.koin.dsl.module
 
 val viewModelModule = module {
+
+    // activity
+    single { LoginViewModel(get()) }
+    single { JobOfferApplyViewModel() }
+    single { StudyApplyViewModel() }
+
+    // fragment
     single { HomeViewModel() }
     single { JobOfferViewModel() }
     single { MenuViewModel() }

@@ -15,15 +15,15 @@ import java.util.*
 
 abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
-    private lateinit var mBinding: VB
-    protected abstract val mViewModel: VM
+    private lateinit var binding: VB
+    protected abstract val viewModel: VM
 
     protected abstract fun observerVieModel()
 
     @Override
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
-        return mBinding.root
+        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
+        return binding.root
     }
 
     @Override
@@ -34,9 +34,9 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
     }
 
     private fun init() {
-        mBinding.setVariable(BR.viewModel, mViewModel)
-        mBinding.lifecycleOwner = this
-        mBinding.executePendingBindings()
+        binding.setVariable(BR.viewModel, viewModel)
+        binding.lifecycleOwner = this
+        binding.executePendingBindings()
     }
 
     private fun getLayoutRes(): Int {

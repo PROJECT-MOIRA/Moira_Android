@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
-    override val mViewModel: HomeViewModel
+    override val viewModel: HomeViewModel
         get() = getViewModel(HomeViewModel::class)
 
     override fun observerVieModel() { }

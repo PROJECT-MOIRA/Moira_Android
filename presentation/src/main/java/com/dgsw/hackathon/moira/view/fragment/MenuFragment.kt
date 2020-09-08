@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
 
-    override val mViewModel: MenuViewModel
+    override val viewModel: MenuViewModel
         get() = getViewModel(MenuViewModel::class)
 
     override fun observerVieModel() { }

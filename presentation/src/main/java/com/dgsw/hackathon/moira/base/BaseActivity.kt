@@ -6,33 +6,35 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.dgsw.hackathon.moira.BR
 import com.dgsw.hackathon.moira.R
+import com.dgsw.hackathon.moira.widget.extension.setStatusMode
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import java.util.*
 
 abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 
-    private lateinit var mBinding: VB
-    protected abstract val mViewModel: VM
+    private lateinit var binding: VB
+    protected abstract val viewModel: VM
 
     protected abstract fun observerVieModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStatusMode()
         performDataBinding()
         observerVieModel()
     }
 
     private fun performDataBinding() {
-        mBinding = DataBindingUtil.setContentView(this, getLayoutRes())
-        mBinding.setVariable(BR.viewModel, mViewModel)
-        mBinding.lifecycleOwner = this
-        mBinding.executePendingBindings()
+        binding = DataBindingUtil.setContentView(this, getLayoutRes())
+        binding.setVariable(BR.viewModel, viewModel)
+        binding.lifecycleOwner = this
+        binding.executePendingBindings()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (::mBinding.isInitialized) mBinding.unbind()
+        if (::binding.isInitialized) binding.unbind()
     }
 
     private fun getLayoutRes(): Int {
