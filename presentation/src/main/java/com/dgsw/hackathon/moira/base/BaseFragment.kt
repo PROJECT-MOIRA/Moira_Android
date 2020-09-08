@@ -1,38 +1,42 @@
 package com.dgsw.hackathon.moira.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.dgsw.hackathon.moira.BR
 import com.dgsw.hackathon.moira.R
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import java.util.*
 
-abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     private lateinit var mBinding: VB
     protected abstract val mViewModel: VM
 
     protected abstract fun observerVieModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        performDataBinding()
+    @Override
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
+        return mBinding.root
+    }
+
+    @Override
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
         observerVieModel()
     }
 
-    private fun performDataBinding() {
-        mBinding = DataBindingUtil.setContentView(this, getLayoutRes())
+    private fun init() {
         mBinding.setVariable(BR.viewModel, mViewModel)
         mBinding.lifecycleOwner = this
         mBinding.executePendingBindings()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (::mBinding.isInitialized) mBinding.unbind()
     }
 
     private fun getLayoutRes(): Int {
