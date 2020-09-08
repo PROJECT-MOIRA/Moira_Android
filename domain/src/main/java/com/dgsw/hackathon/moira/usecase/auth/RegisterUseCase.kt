@@ -1,8 +1,8 @@
-package com.dgsw.hackathon.moira.usecase
+package com.dgsw.hackathon.moira.usecase.auth
 
 import com.dgsw.hackathon.moira.base.ParamsUseCase
 import com.dgsw.hackathon.moira.repository.AuthRepository
-import com.dgsw.hackathon.moira.request.RegisterRequest
+import com.dgsw.hackathon.moira.request.auth.RegisterRequest
 import io.reactivex.Completable
 
 class RegisterUseCase(
@@ -10,14 +10,16 @@ class RegisterUseCase(
 ): ParamsUseCase<RegisterUseCase.Params, Completable>() {
 
     override fun buildUseCaseObservable(params: Params): Completable =
-        authRepository.register(RegisterRequest(
-            params.id,
-            params.pw,
-            params.name,
-            params.grade,
-            params.contact,
-            params.email
-        ))
+        authRepository.register(
+            RegisterRequest(
+                params.id,
+                params.pw,
+                params.name,
+                params.grade,
+                params.contact,
+                params.email
+            )
+        )
 
     data class Params(
         val id : String,

@@ -1,11 +1,11 @@
 package com.dgsw.hackathon.moira.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.dgsw.hackathon.moira.base.BaseViewModel
-import com.dgsw.hackathon.moira.usecase.LoginUseCase
+import com.dgsw.hackathon.moira.model.LoginData
+import com.dgsw.hackathon.moira.usecase.auth.LoginUseCase
 import com.dgsw.hackathon.moira.widget.SingleLiveEvent
-import io.reactivex.observers.DisposableCompletableObserver
+import io.reactivex.observers.DisposableSingleObserver
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase
@@ -15,18 +15,19 @@ class LoginViewModel(
     val pw = MutableLiveData<String>()
 
     val loginEvent = SingleLiveEvent<Unit>()
-    val successEvent = SingleLiveEvent<Unit>()
+
+    val successEvent = MutableLiveData<String>()
+    val errorEvent = MutableLiveData<String>()
 
     fun login() {
         addDisposable(
             loginUseCase.buildUseCaseObservable(LoginUseCase.Params(id.value!!, pw.value!!)),
-            object : DisposableCompletableObserver() {
-                override fun onComplete() {
-                    successEvent.call()
-                    Log.d("test", "success")
+            object : DisposableSingleObserver<LoginData>() {
+                override fun onSuccess(t: LoginData) {
+                    successEvent.value = t.token
                 }
                 override fun onError(e: Throwable) {
-                    Log.d("test", e.message.toString())
+                    errorEvent.value = e.message
                 }
             })
     }

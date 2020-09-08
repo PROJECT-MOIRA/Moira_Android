@@ -1,4 +1,4 @@
-package com.dgsw.hackathon.moira.network.response.data
+package com.dgsw.hackathon.moira.model
 
 data class LoginData(
     val contact: String,

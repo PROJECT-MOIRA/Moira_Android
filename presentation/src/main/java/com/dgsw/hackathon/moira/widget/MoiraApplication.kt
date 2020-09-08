@@ -14,7 +14,8 @@ class MoiraApplication : Application() {
             androidContext(this@MoiraApplication)
 
             val modules =
-                listOf(netWorkModule, remoteModule, repositoryModule, dataSourceModule, useCaseModule, viewModelModule)
+                listOf(netWorkModule, serviceModule, remoteModule, repositoryModule,
+                    dataSourceModule, useCaseModule, viewModelModule)
 
             modules(modules)
         }

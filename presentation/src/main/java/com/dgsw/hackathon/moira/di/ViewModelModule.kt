@@ -11,7 +11,7 @@ val viewModelModule = module {
     single { StudyApplyViewModel() }
 
     // fragment
-    single { HomeViewModel() }
+    single { HomeViewModel(get(), get()) }
     single { JobOfferViewModel() }
     single { MenuViewModel() }
     single { StudyViewModel() }

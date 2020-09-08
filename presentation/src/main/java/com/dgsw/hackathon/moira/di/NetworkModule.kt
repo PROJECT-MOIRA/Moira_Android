@@ -1,9 +1,11 @@
 package com.dgsw.hackathon.moira.di
 
+import com.dgsw.hackathon.moira.network.interceptor.TokenInterceptor
 import com.dgsw.hackathon.moira.util.Constants
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -11,16 +13,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.Executors
 
 val netWorkModule = module {
-    single { provideOkhttpClient() }
+    single { TokenInterceptor(androidApplication()) }
+    single { provideOkhttpClient(get()) }
     single { provideRetrofit(get()) }
 }
 
-fun provideOkhttpClient(): OkHttpClient {
+fun provideOkhttpClient(tokenInterceptor: TokenInterceptor): OkHttpClient {
     val interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
     return OkHttpClient().newBuilder().apply {
         addInterceptor(interceptor)
+        addInterceptor(tokenInterceptor)
     }.build()
 }
 

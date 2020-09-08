@@ -3,7 +3,9 @@ package com.dgsw.hackathon.moira.view.activtiy
 import androidx.lifecycle.Observer
 import com.dgsw.hackathon.moira.base.BaseActivity
 import com.dgsw.hackathon.moira.databinding.ActivityLoginBinding
+import com.dgsw.hackathon.moira.util.SharedPreferenceManager
 import com.dgsw.hackathon.moira.viewmodel.LoginViewModel
+import com.dgsw.hackathon.moira.widget.extension.shortToast
 import com.dgsw.hackathon.moira.widget.extension.startActivity
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -18,7 +20,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 login()
             })
             successEvent.observe(this@LoginActivity, Observer {
+                SharedPreferenceManager.setToken(application, it)
                 startActivity(NavigationActivity::class.java)
+            })
+            errorEvent.observe(this@LoginActivity, Observer {
+                shortToast(it)
             })
         }
     }

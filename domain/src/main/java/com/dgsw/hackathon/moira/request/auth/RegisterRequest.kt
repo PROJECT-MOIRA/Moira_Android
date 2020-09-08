@@ -1,4 +1,4 @@
-package com.dgsw.hackathon.moira.request
+package com.dgsw.hackathon.moira.request.auth
 
 import com.dgsw.hackathon.moira.util.Utils
 import java.security.NoSuchAlgorithmException
