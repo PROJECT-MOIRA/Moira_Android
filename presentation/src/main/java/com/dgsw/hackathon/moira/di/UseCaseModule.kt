@@ -6,6 +6,8 @@ import com.dgsw.hackathon.moira.usecase.job.DeleteJobOfferUseCase
 import com.dgsw.hackathon.moira.usecase.job.GetAllJobOfferUseCase
 import com.dgsw.hackathon.moira.usecase.job.PostJobOfferUseCase
 import com.dgsw.hackathon.moira.usecase.job.PutJobOfferUseCase
+import com.dgsw.hackathon.moira.usecase.portfolio.GetPortfolioUseCase
+import com.dgsw.hackathon.moira.usecase.portfolio.PostPortfolioUseCase
 import com.dgsw.hackathon.moira.usecase.study.DeleteStudyUseCase
 import com.dgsw.hackathon.moira.usecase.study.GetAllStudyUseCase
 import com.dgsw.hackathon.moira.usecase.study.PostStudyUseCase
@@ -29,4 +31,8 @@ val useCaseModule = module {
     single { PostStudyUseCase(get()) }
     single { DeleteStudyUseCase(get()) }
     single { PutStudyUseCase(get()) }
+
+    //Portfolio
+    single { GetPortfolioUseCase(get()) }
+    single { PostPortfolioUseCase(get()) }
 }

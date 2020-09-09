@@ -3,6 +3,7 @@ package com.dgsw.hackathon.moira.widget.recyclerview.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.dgsw.hackathon.moira.R
 import com.dgsw.hackathon.moira.databinding.ItemStudyBinding
@@ -12,6 +13,7 @@ import com.dgsw.hackathon.moira.widget.recyclerview.viewmodel.StudyItemViewModel
 class StudyAdapter : RecyclerView.Adapter<StudyAdapter.ViewHolder>(){
 
     private lateinit var studyList : ArrayList<StudyData>
+    val shortClick = MutableLiveData<Int>()
 
     fun setList(list : ArrayList<StudyData>) {
         if(::studyList.isInitialized) return
@@ -45,6 +47,7 @@ class StudyAdapter : RecyclerView.Adapter<StudyAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
         with(holder) {
             bind(studyList[position])
+            itemView.setOnClickListener { shortClick.value = position }
         }
     }
 }

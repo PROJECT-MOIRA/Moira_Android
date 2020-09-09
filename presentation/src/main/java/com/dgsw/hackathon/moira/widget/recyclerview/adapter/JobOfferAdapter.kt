@@ -3,6 +3,7 @@ package com.dgsw.hackathon.moira.widget.recyclerview.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.dgsw.hackathon.moira.R
 import com.dgsw.hackathon.moira.databinding.ItemJobOfferBinding
@@ -12,6 +13,7 @@ import com.dgsw.hackathon.moira.widget.recyclerview.viewmodel.JobOfferItemViewMo
 class JobOfferAdapter : RecyclerView.Adapter<JobOfferAdapter.ViewHolder>(){
 
     private lateinit var jobList : ArrayList<JobData>
+    val shortClick = MutableLiveData<Int>()
 
     fun setList(list : ArrayList<JobData>) {
         if(::jobList.isInitialized) return
@@ -45,6 +47,7 @@ class JobOfferAdapter : RecyclerView.Adapter<JobOfferAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
         with(holder) {
             bind(jobList[position])
+            itemView.setOnClickListener { shortClick.value = position }
         }
     }
 }

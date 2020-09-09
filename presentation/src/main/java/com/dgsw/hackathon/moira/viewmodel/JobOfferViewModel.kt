@@ -1,5 +1,6 @@
 package com.dgsw.hackathon.moira.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import com.dgsw.hackathon.moira.base.BaseViewModel
 import com.dgsw.hackathon.moira.model.JobData
 import com.dgsw.hackathon.moira.usecase.job.GetAllJobOfferUseCase
@@ -13,6 +14,7 @@ class JobOfferViewModel(
 
     val jobAdapter = JobOfferAdapter()
     val jobList = ArrayList<JobData>()
+    val jobListSize = MutableLiveData<String>()
 
     val applyEvent = SingleLiveEvent<Unit>()
 
@@ -29,6 +31,7 @@ class JobOfferViewModel(
                 override fun onSuccess(t: List<JobData>) {
                     jobList.addAll(t)
                     jobAdapter.notifyDataSetChanged()
+                    jobListSize.value = "${jobList.size}개의 항목이 존재합니다"
                 }
                 override fun onError(e: Throwable) { }
             })

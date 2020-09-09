@@ -1,5 +1,6 @@
 package com.dgsw.hackathon.moira.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import com.dgsw.hackathon.moira.base.BaseViewModel
 import com.dgsw.hackathon.moira.model.StudyData
 import com.dgsw.hackathon.moira.usecase.study.GetAllStudyUseCase
@@ -13,6 +14,7 @@ class StudyViewModel(
 
     val studyAdapter = StudyAdapter()
     val studyList = ArrayList<StudyData>()
+    val studyListSize = MutableLiveData<String>()
 
     val applyEvent = SingleLiveEvent<Unit>()
 
@@ -29,6 +31,7 @@ class StudyViewModel(
                 override fun onSuccess(t: List<StudyData>) {
                     studyList.addAll(t)
                     studyAdapter.notifyDataSetChanged()
+                    studyListSize.value = "${studyList.size}개의 항목이 존재합니다"
                 }
                 override fun onError(e: Throwable) { }
             })
