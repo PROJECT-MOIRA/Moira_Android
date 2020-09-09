@@ -38,6 +38,11 @@
             android:orientation="vertical"
             android:gravity="center">
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/background_people"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -84,6 +89,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_pw"
+                        android:inputType="textPassword"
                         android:text="@={viewModel.pw}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
@@ -93,6 +99,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginBottom="80dp"
                 android:onClick="@{() -> viewModel.loginClick()}"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
@@ -100,15 +107,6 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@android:color/white"
                 android:text="@string/title_login"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:backgroundTint="@android:color/white"
-                android:textColor="@android:color/black"
-                android:text="@string/title_register"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

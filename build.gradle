@@ -17,6 +17,7 @@ buildscript {
         okHttpVersion = "4.7.2"
 
         materialVersion = '1.2.0-alpha04'
+        circularimageviewVersion = '3.2.0'
     }
 
     repositories {
