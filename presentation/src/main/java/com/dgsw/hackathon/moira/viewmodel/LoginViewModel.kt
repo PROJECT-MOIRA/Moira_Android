@@ -37,10 +37,7 @@ class LoginViewModel(
     }
 
     fun setInfo(data: LoginData) {
-        with(SharedPreferenceManager) {
-            setId(application, data.id)
-            setToken(application, data.token)
-        }
+        SharedPreferenceManager.setLoginData(application, data)
     }
 
     fun loginClick() {

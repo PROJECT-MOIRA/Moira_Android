@@ -17,6 +17,7 @@ val viewModelModule = module {
     viewModel { StudyDetailViewModel() }
 
     viewModel { PortfolioViewModel(androidApplication(), get()) }
+    viewModel { ProfileViewModel(androidApplication()) }
 
     // fragment
     viewModel { HomeViewModel(androidApplication(), get(), get()) }
