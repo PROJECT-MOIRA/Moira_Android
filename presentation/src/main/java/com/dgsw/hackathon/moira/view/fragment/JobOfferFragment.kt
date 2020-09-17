@@ -17,7 +17,7 @@ class JobOfferFragment : BaseFragment<FragmentJobOfferBinding, JobOfferViewModel
         get() = getViewModel(JobOfferViewModel::class)
 
     override fun observerVieModel() {
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
 
         with(viewModel) {
             applyEvent.observe(this@JobOfferFragment, Observer {

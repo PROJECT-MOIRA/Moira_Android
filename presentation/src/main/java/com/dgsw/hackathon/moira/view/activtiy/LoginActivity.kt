@@ -17,13 +17,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun observerVieModel() {
         with(viewModel) {
             loginEvent.observe(this@LoginActivity, Observer {
-                login()
+                setLogin()
             })
             registerEvent.observe(this@LoginActivity, Observer {
                 startActivity(RegisterActivity::class.java)
             })
             successEvent.observe(this@LoginActivity, Observer {
                 startActivityWithFinish(NavigationActivity::class.java)
+            })
+            emptyEvent.observe(this@LoginActivity, Observer {
+                shortToast("항목이 비었는지 확인해주세요")
             })
             errorEvent.observe(this@LoginActivity, Observer {
                 shortToast(it)

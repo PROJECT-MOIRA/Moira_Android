@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.dgsw.hackathon.moira.base.BaseViewModel
 import com.dgsw.hackathon.moira.util.SharedPreferenceManager
+import com.dgsw.hackathon.moira.widget.SingleLiveEvent
 
 class ProfileViewModel(
     private val application: Application
@@ -13,6 +14,8 @@ class ProfileViewModel(
     val email = MutableLiveData<String>()
     val contact = MutableLiveData<String>()
     val grade = MutableLiveData<String>()
+
+    val backEvent = SingleLiveEvent<Unit>()
 
     init {
         setProfile()
@@ -25,5 +28,9 @@ class ProfileViewModel(
             contact.value = getContact(application)
             grade.value = getGrade(application)
         }
+    }
+
+    fun backClick() {
+        backEvent.call()
     }
 }

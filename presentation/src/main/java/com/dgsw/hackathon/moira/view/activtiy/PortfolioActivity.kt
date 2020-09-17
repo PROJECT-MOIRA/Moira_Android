@@ -1,5 +1,6 @@
 package com.dgsw.hackathon.moira.view.activtiy
 
+import androidx.lifecycle.Observer
 import com.dgsw.hackathon.moira.base.BaseActivity
 import com.dgsw.hackathon.moira.databinding.ActivityPortfolioBinding
 import com.dgsw.hackathon.moira.viewmodel.PortfolioViewModel
@@ -10,5 +11,11 @@ class PortfolioActivity : BaseActivity<ActivityPortfolioBinding, PortfolioViewMo
     override val viewModel: PortfolioViewModel
         get() = getViewModel(PortfolioViewModel::class)
 
-    override fun observerVieModel() { }
+    override fun observerVieModel() {
+        with(viewModel) {
+            backEvent.observe(this@PortfolioActivity, Observer {
+                onBackPressed()
+            })
+        }
+    }
 }

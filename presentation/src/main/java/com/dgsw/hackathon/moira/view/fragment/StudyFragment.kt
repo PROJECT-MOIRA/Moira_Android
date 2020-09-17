@@ -19,7 +19,7 @@ class StudyFragment : BaseFragment<FragmentStudyBinding, StudyViewModel>() {
         get() = getViewModel(StudyViewModel::class)
 
     override fun observerVieModel() {
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
 
         with(viewModel) {
             applyEvent.observe(this@StudyFragment, Observer {

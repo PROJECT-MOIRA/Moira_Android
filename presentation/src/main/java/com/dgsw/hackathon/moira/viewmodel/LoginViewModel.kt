@@ -22,8 +22,20 @@ class LoginViewModel(
 
     val successEvent = SingleLiveEvent<Unit>()
     val errorEvent = MutableLiveData<String>()
+    val emptyEvent = SingleLiveEvent<Unit>()
 
-    fun login() {
+    fun setLogin() {
+        val isEmpty = id.value.isNullOrBlank() || pw.value.isNullOrBlank()
+
+        if (isEmpty) {
+            emptyEvent.call()
+            return
+        }
+
+        login()
+    }
+
+    private fun login() {
         addDisposable(
             loginUseCase.buildUseCaseObservable(LoginUseCase.Params(id.value!!, pw.value!!)),
             object : DisposableSingleObserver<LoginData>() {

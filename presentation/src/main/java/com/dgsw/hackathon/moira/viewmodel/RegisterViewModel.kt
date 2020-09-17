@@ -17,9 +17,23 @@ class RegisterViewModel(
     val contact = MutableLiveData<String>()
     val email = MutableLiveData<String>()
 
+    val registerEvent = SingleLiveEvent<Unit>()
     val successEvent = SingleLiveEvent<Unit>()
+    val emptyEvent = SingleLiveEvent<Unit>()
 
-    fun register() {
+    fun setRegister() {
+        val isEmpty = id.value.isNullOrBlank() || pw.value.isNullOrBlank() || name.value.isNullOrBlank() ||
+                grade.value.isNullOrBlank() || contact.value.isNullOrBlank() || email.value.isNullOrBlank()
+
+        if (isEmpty) {
+            emptyEvent.call()
+            return
+        }
+
+        register()
+    }
+
+    private fun register() {
         addDisposable(registerUseCase.buildUseCaseObservable(RegisterUseCase.Params(
             id.value!!,
             pw.value!!,
@@ -35,5 +49,9 @@ class RegisterViewModel(
 
             }
         })
+    }
+
+    fun registerClick() {
+        registerEvent.call()
     }
 }

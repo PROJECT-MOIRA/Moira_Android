@@ -47,11 +47,13 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_person"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
@@ -59,6 +61,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_id"
+                        android:maxLength="20"
                         android:text="@={viewModel.id}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
@@ -73,11 +76,13 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_lock"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
@@ -85,6 +90,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_pw"
+                        android:maxLength="20"
                         android:inputType="textPassword"
                         android:text="@={viewModel.pw}"
                         android:layout_width="match_parent"
@@ -100,11 +106,13 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_lock"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_people"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    app:counterEnabled="true"
+                    app:counterMaxLength="5"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
@@ -112,6 +120,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_name"
+                        android:maxLength="5"
                         android:inputType="text"
                         android:text="@={viewModel.name}"
                         android:layout_width="match_parent"
@@ -127,11 +136,13 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_study"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    app:counterEnabled="true"
+                    app:counterMaxLength="2"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
@@ -139,6 +150,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_grade"
+                        android:maxLength="2"
                         android:inputType="number"
                         android:text="@={viewModel.grade}"
                         android:layout_width="match_parent"
@@ -154,11 +166,13 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_local_phone"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    app:counterEnabled="true"
+                    app:counterMaxLength="11"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
@@ -166,6 +180,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_contact"
+                        android:maxLength="11"
                         android:inputType="number"
                         android:text="@={viewModel.contact}"
                         android:layout_width="match_parent"
@@ -181,11 +196,13 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_email"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
@@ -193,6 +210,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="@string/text_email"
+                        android:maxLength="20"
                         android:inputType="textEmailAddress"
                         android:text="@={viewModel.email}"
                         android:layout_width="match_parent"
@@ -202,12 +220,13 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="80dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginTop="20dp"
-                android:onClick="@{() -> viewModel.register()}"
+                android:background="@drawable/background_round"
+                android:onClick="@{() -> viewModel.registerClick()}"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@android:color/white"
                 android:text="@string/title_register"/>

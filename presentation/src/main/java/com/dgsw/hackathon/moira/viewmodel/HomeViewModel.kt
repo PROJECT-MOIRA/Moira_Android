@@ -27,8 +27,7 @@ class HomeViewModel(
     val studyAdapter = StudyAdapter()
     val studyList = ArrayList<StudyData>()
 
-    val jobMoreEvent = SingleLiveEvent<Unit>()
-    val studyMoreEvent = SingleLiveEvent<Unit>()
+    val profileEvent = SingleLiveEvent<Unit>()
 
     init {
         getAllJobOffer()
@@ -64,11 +63,7 @@ class HomeViewModel(
             })
     }
 
-    fun jobMoreClick() {
-        jobMoreEvent.call()
-    }
-
-    fun studyMoreClick() {
-        studyMoreEvent.call()
+    fun profileClick() {
+        profileEvent.call()
     }
 }
