@@ -99,7 +99,6 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginBottom="80dp"
                 android:onClick="@{() -> viewModel.loginClick()}"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
@@ -107,6 +106,16 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@android:color/white"
                 android:text="@string/title_login"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:onClick="@{() -> viewModel.registerClick()}"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/black"
+                android:text="@string/title_register"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

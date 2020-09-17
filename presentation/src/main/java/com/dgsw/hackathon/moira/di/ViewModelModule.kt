@@ -9,6 +9,7 @@ val viewModelModule = module {
 
     // activity
     viewModel { LoginViewModel(androidApplication(), get()) }
+    viewModel { RegisterViewModel(get()) }
 
     viewModel { JobOfferApplyViewModel(androidApplication(), get()) }
     viewModel { JobOfferDetailViewModel() }

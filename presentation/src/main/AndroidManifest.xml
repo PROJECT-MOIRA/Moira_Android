@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activtiy.ProfileActivity"></activity>
+        <activity android:name=".view.activtiy.RegisterActivity"></activity>
+        <activity android:name=".view.activtiy.ProfileActivity" />
         <activity android:name=".view.activtiy.PortfolioActivity" />
         <activity android:name=".view.activtiy.LoginActivity">
             <intent-filter>

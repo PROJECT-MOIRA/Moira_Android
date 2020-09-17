@@ -18,6 +18,7 @@ class LoginViewModel(
     val pw = MutableLiveData<String>()
 
     val loginEvent = SingleLiveEvent<Unit>()
+    val registerEvent = SingleLiveEvent<Unit>()
 
     val successEvent = SingleLiveEvent<Unit>()
     val errorEvent = MutableLiveData<String>()
@@ -42,5 +43,9 @@ class LoginViewModel(
 
     fun loginClick() {
         loginEvent.call()
+    }
+
+    fun registerClick() {
+        registerEvent.call()
     }
 }
